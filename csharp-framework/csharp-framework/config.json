@@ -1,0 +1,11 @@
+{
+   "baseUrl": "https://parabank.parasoft.com/parabank/index.htm",
+  "apiUrl": "https://petstore.swagger.io/v2",
+  "browser": "chromium",
+  "headless": false,
+  "slowMo": 500,
+  "credentials": {
+    "username": "john",
+    "password": "demo"
+  }
+}
