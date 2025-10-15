@@ -1,5 +1,5 @@
 {
-   "baseUrl": "https://parabank.parasoft.com/parabank/index.htm",
+  "baseUrl": "https://parabank.parasoft.com/parabank/index.htm",
   "apiUrl": "https://petstore.swagger.io/v2",
   "browser": "chromium",
   "headless": false,

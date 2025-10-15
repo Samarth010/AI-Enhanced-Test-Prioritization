@@ -39,7 +39,8 @@ namespace csharp_framework.Utils
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error loading configuration: {ex.Message}");
+                //Console.WriteLine($"Error loading configuration: {ex.Message}");
+                throw new ApplicationException("Failed to load configuration file.", ex);
             }
         }
 
