@@ -73,5 +73,11 @@ namespace csharp_framework.Pages
             }      
         }
 
+        /// Opens the ParaBank login page in the current browser context.
+        public async Task NavigateAsync()
+        {
+            await _page.GotoAsync("https://parabank.parasoft.com/parabank/index.htm");
+        }
+
     }
 }
