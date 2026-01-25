@@ -6,15 +6,19 @@ using System.Threading.Tasks;
 using Reqnroll;
 using csharp_framework.Pages;
 using FluentAssertions;
+using csharp_framework.Utils;
+using Microsoft.VisualStudio.TestPlatform.ObjectModel.Client;
 
 
 [Binding]
 public class LoginSteps
 {
     private readonly LoginPage _loginPage;
-    public LoginSteps(LoginPage loginPage)
+    private readonly Config _config;
+    public LoginSteps(LoginPage loginPage, Config config)
     {
         _loginPage = loginPage;
+        _config = config;
     }
 
     [Given("I am on the login page")]
@@ -26,7 +30,7 @@ public class LoginSteps
     [When("I enter valid credentials")]
     public async Task WhenIEnterValidCredentials()
     {
-        await _loginPage.Login("validUser", "validPass");
+        await _loginPage.Login(_config.Credentials.Username, _config.Credentials.Password);
     }
 
     [When("I enter invalid credentials")]
@@ -46,5 +50,12 @@ public class LoginSteps
     {
         var success = await _loginPage.IsLoginSuccessful();
         success.Should().BeTrue("a successful login should navigate to Accounts Overview");
+    }
+
+    [Then("I should see a login error message")]
+    public async Task ThenIShouldSeeALoginErrorMessage()
+    {
+        var error = await _loginPage.GetLoginErrorMessage();
+        error.Should().NotBeNullOrWhiteSpace("an invalid login should show an error message");
     }
 }

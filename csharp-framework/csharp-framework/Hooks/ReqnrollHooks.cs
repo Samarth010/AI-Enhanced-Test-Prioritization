@@ -1,8 +1,14 @@
 ﻿using csharp_framework.Pages;
+using csharp_framework.Utils;
 using Microsoft.Playwright;
+using Microsoft.VisualStudio.TestPlatform.ObjectModel.Client;
+using Newtonsoft.Json;
 using Reqnroll;
+using Reqnroll;
+using Reqnroll.BoDi;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +21,13 @@ namespace csharp_framework.Hooks
         private static IPlaywright _playwright;
         private static IBrowser _browser;
         private IPage _page;
+
+        private readonly IObjectContainer _container;
+
+        public ReqnrollHooks(IObjectContainer container)
+        {
+            _container = container;
+        } 
 
         // Runs once before the entire test run
         [BeforeTestRun]
@@ -31,32 +44,45 @@ namespace csharp_framework.Hooks
 
         // Runs before each scenario
         [BeforeScenario]
-        public async Task BeforeScenario(ScenarioContext context)
+        public async Task SetupPlaywright()
         {
-            _page = await _browser.NewPageAsync();
+            // Load config
+            var config = ConfigManager.Settings;
+            _container.RegisterInstanceAs(config);
 
-            // Register Playwright page + Page Objects for DI
-            context.ScenarioContainer.RegisterInstanceAs(_page);
-            context.ScenarioContainer.RegisterInstanceAs(new LoginPage(_page));
+            // Create Playwright
+            var playwright = await Playwright.CreateAsync();
+            _container.RegisterInstanceAs(playwright);
+
+            // Launch browser
+            var browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
+            {
+                Headless = config.Headless,
+                SlowMo = config.SlowMo
+            });
+            _container.RegisterInstanceAs(browser);
+
+            // Create context
+            var context = await browser.NewContextAsync();
+            _container.RegisterInstanceAs(context);
+
+            // Create page
+            var page = await context.NewPageAsync();
+            _container.RegisterInstanceAs(page);
         }
+
 
         // Runs after each scenario
         [AfterScenario]
-        public async Task AfterScenario()
+        public async Task Cleanup()
         {
-            if (_page != null)
-                await _page.CloseAsync();
-        }
+            var context = _container.Resolve<IBrowserContext>();
+            await context.CloseAsync();
 
-        // Runs once after the entire test run
-        [AfterTestRun]
-        public static async Task AfterTestRun()
-        {
-            if (_browser != null)
-                await _browser.CloseAsync();
+            var browser = _container.Resolve<IBrowser>();
+            await browser.CloseAsync();
+        } 
 
-            _playwright?.Dispose();
-        }
     }
 }
 

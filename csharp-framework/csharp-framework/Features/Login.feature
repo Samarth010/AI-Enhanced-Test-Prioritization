@@ -1,3 +1,4 @@
+@login @smoke @regression
 Feature: Login functionality
   As a ParaBank user
   I want to log into the application
@@ -13,4 +14,4 @@ Feature: Login functionality
     Given I am on the login page
     When I enter invalid credentials
     And I click Log In
-    Then I should see a login error message
+    Then I should see a login error message 
