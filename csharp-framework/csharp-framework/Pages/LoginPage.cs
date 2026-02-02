@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Playwright;
+using csharp_framework.Utils;
 
 namespace csharp_framework.Pages
 {
@@ -16,7 +17,7 @@ namespace csharp_framework.Pages
         private readonly ILocator _accountsOverviewHeading;
         private readonly ILocator _errorMessage;
 
-        public LoginPage(IPage page) : base(page)
+        public LoginPage(IPage page, Config config) : base(page, config)
         {
             //User-facing selectors
             _usernameInput = _page.Locator("input[name='username']");
@@ -29,7 +30,7 @@ namespace csharp_framework.Pages
         }
 
         /// Performs login by given credentials.
-        public async Task Login(string username, string password)
+        public async Task LoginAsync(string username, string password)
         {
             try
             {
@@ -76,7 +77,7 @@ namespace csharp_framework.Pages
         /// Opens the ParaBank login page in the current browser context.
         public async Task NavigateAsync()
         {
-            await _page.GotoAsync("https://parabank.parasoft.com/parabank/index.htm");
+            await NavigateToAsync("/parabank/index.htm");
         }
 
     }

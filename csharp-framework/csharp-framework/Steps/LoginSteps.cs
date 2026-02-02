@@ -30,26 +30,19 @@ public class LoginSteps
     [When("I enter valid credentials")]
     public async Task WhenIEnterValidCredentials()
     {
-        await _loginPage.Login(_config.Credentials.Username, _config.Credentials.Password);
+        await _loginPage.LoginAsync(_config.Credentials.Username, _config.Credentials.Password);
     }
 
     [When("I enter invalid credentials")]
     public async Task WhenIEnterInvalidCredentials()
     {
-        await _loginPage.Login("wrongUser", "wrongPass");
+        await _loginPage.LoginAsync("wrongUser", "wrongPass");
     }
 
     [When("I click Log In")]
     public Task WhenIClickLogIn()
     {
         return Task.CompletedTask;
-    }
-
-    [Then("I should see the Accounts Overview page")]
-    public async Task ThenIShouldSeeTheAccountsOverviewPage()
-    {
-        var success = await _loginPage.IsLoginSuccessful();
-        success.Should().BeTrue("a successful login should navigate to Accounts Overview");
     }
 
     [Then("I should see a login error message")]

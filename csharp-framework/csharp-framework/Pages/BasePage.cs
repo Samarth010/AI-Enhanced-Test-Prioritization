@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using csharp_framework.Utils;
 
 namespace csharp_framework.Pages
 {
@@ -11,16 +12,33 @@ namespace csharp_framework.Pages
     {
 
         protected readonly IPage _page;
+        protected readonly Config _config;
 
-        protected BasePage(IPage page)
+        protected BasePage(IPage page, Config config)
         {
             _page = page;
+            _config = config;
         }
 
         /// Navigate to a given URL.
         /// Any page can call this method to go to a specific URL.
-        public async Task NavigateToAsync(string url)
+        public async Task NavigateToAsync(string relativePath)
         {
+            //var baseUrl = _config.BaseUrl.TrimEnd('/');
+            //var path = relativePath.TrimStart('/');
+            //var url = $"{baseUrl}/{path}";
+            //await _page.GotoAsync(url);
+
+            var baseUrl = _config.BaseUrl?.TrimEnd('/');
+
+            // Validation check
+            if (string.IsNullOrEmpty(baseUrl))
+                throw new Exception("BaseUrl is missing from configuration!");
+
+            var path = relativePath.TrimStart('/');
+            var url = $"{baseUrl}/{path}";
+
+            Console.WriteLine($"DEBUG: Navigating to {url}");
             await _page.GotoAsync(url);
         }
 
