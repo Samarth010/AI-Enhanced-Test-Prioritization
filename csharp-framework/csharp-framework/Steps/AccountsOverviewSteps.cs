@@ -1,6 +1,6 @@
 ﻿using csharp_framework.Pages;
 using csharp_framework.Utils;
-using FluentAssertions; 
+using FluentAssertions;
 using Reqnroll;
 using System;
 using System.Collections.Generic;
@@ -17,20 +17,18 @@ namespace csharp_framework.Steps
         // Page Objects injected via Reqnroll's dependency injection
         private readonly LoginPage _loginPage;
         private readonly AccountsOverviewPage _accountsOverviewPage;
-        private readonly AccountDetailsPage _accountDetailsPage;
         private readonly Config _config;
 
 
-        // Constructor receives Page Objects registered in Hooks
-        public AccountsOverviewSteps(LoginPage loginPage, AccountsOverviewPage accountsOverviewPage, Config config, AccountDetailsPage accountDetailsPage)
+        // Constructor receives only the page objects needed for this step class
+        public AccountsOverviewSteps(LoginPage loginPage, AccountsOverviewPage accountsOverviewPage, Config config)
         {
             _loginPage = loginPage;
             _accountsOverviewPage = accountsOverviewPage;
             _config = config;
-            _accountDetailsPage = accountDetailsPage;
         }
 
-        // Logs in using valid credentials fetched from connfig file
+        // Logs in using valid credentials fetched from config file
         [Given("I log in with valid credentials")]
         public async Task GivenILogInWithValidCredentials()
         {
@@ -86,13 +84,6 @@ namespace csharp_framework.Steps
         public async Task WhenTheUserSelectsASpecificAccountNumber()
         {
             await _accountsOverviewPage.OpenFirstAccountAsync();
-        }
-
-        [Then("the Account Details page should be displayed")]
-        public async Task ThenTheAccountDetailsPageShouldBeDisplayed()
-        {
-            var loaded = await _accountDetailsPage.IsLoadedAsync();
-            loaded.Should().BeTrue();
         }
     }
 

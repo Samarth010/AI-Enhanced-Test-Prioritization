@@ -8,7 +8,7 @@ Feature: Login functionality
     Given I am on the login page
     When I enter valid credentials
     And I click Log In
-    Then I should see the Accounts Overview page
+    Then I should see the Accounts Overview page 
 
   Scenario: Invalid login
     Given I am on the login page

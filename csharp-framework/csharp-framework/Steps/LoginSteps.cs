@@ -36,7 +36,7 @@ public class LoginSteps
     [When("I enter invalid credentials")]
     public async Task WhenIEnterInvalidCredentials()
     {
-        await _loginPage.LoginAsync("wrongUser", "wrongPass");
+        await _loginPage.LoginAsync("wrongUser334", "wrongPass123123");
     }
 
     [When("I click Log In")]
