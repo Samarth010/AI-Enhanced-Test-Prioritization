@@ -1,10 +1,11 @@
-﻿using Microsoft.Playwright;
+﻿using csharp_framework.Hooks;
+using csharp_framework.Utils;
+using Microsoft.Playwright;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using csharp_framework.Utils;
 
 namespace csharp_framework.Pages
 {
@@ -25,6 +26,9 @@ namespace csharp_framework.Pages
             _accountRows = _page.Locator("#accountTable tbody tr");
             _balanceCells = _page.Locator("#accountTable tbody tr td:nth-child(2)");
             _accountLinks = _page.Locator("#accountTable tbody tr td a");
+
+            //For traking page usage in Hooks
+            PageTracker.Register(nameof(AccountsOverviewPage));
 
         }
 

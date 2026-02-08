@@ -1,0 +1,24 @@
+{
+  "LoginPage": [
+    "Successful login",
+    "Invalid login"
+  ],
+  "AccountsOverviewPage": [
+    "Successful login",
+    "View Accounts Overview after successful login",
+    "Accounts Overview displays account information"
+  ],
+  "AccountDetailsPage": [
+    "Navigation to account details",
+    "Transaction history displays"
+  ],
+  "TransferFundsPage": [
+    "Transfer funds between accounts",
+    "Transfer validation errors"
+  ],
+  "OpenNewAccountPage": [
+    "Open new account successfully",
+    "Open new account validation"
+  ]
+}
+

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Playwright;
 using csharp_framework.Utils;
+using csharp_framework.Hooks;
 
 namespace csharp_framework.Pages
 {
@@ -27,8 +28,11 @@ namespace csharp_framework.Pages
             _errorMessage = _page.Locator("#rightPanel .error");
             //_errorMessage = _page.GetByRole(AriaRole.Alert);
 
+            //For traking page usage in Hooks
+            PageTracker.Register(nameof(LoginPage));
         }
 
+        //testchange
         /// Performs login by given credentials.
         public async Task LoginAsync(string username, string password)
         {

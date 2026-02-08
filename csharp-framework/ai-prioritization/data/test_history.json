@@ -1,0 +1,134 @@
+{
+  "tests": [
+    {
+      "name": "Accounts Overview displays account information",
+      "status": "Passed",
+      "duration": 4.9749282,
+      "pages": [
+        "LoginPage",
+        "AccountsOverviewPage"
+      ],
+      "timestamp": "2026-02-03T02:33:50.8567414Z"
+    },
+    {
+      "name": "Navigation to account details",
+      "status": "Passed",
+      "duration": 5.6020295,
+      "pages": [
+        "LoginPage",
+        "AccountsOverviewPage"
+      ],
+      "timestamp": "2026-02-03T02:33:57.2386874Z"
+    },
+    {
+      "name": "View Accounts Overview after successful login",
+      "status": "Passed",
+      "duration": 4.952777,
+      "pages": [
+        "LoginPage",
+        "AccountsOverviewPage"
+      ],
+      "timestamp": "2026-02-03T02:34:02.9398244Z"
+    },
+    {
+      "name": "Invalid login",
+      "status": "Passed",
+      "duration": 4.1799876,
+      "pages": [
+        "LoginPage",
+        "AccountsOverviewPage"
+      ],
+      "timestamp": "2026-02-03T02:34:07.8309541Z"
+    },
+    {
+      "name": "Successful login",
+      "status": "Passed",
+      "duration": 4.2427675,
+      "pages": [
+        "LoginPage",
+        "AccountsOverviewPage"
+      ],
+      "timestamp": "2026-02-03T02:34:12.8547723Z"
+    },
+    {
+      "name": "Accounts Overview displays account information",
+      "status": "Passed",
+      "duration": 5.3758787,
+      "pages": [
+        "LoginPage",
+        "AccountsOverviewPage"
+      ],
+      "timestamp": "2026-02-03T02:36:39.5813736Z"
+    },
+    {
+      "name": "Navigation to account details",
+      "status": "Passed",
+      "duration": 5.7176627,
+      "pages": [
+        "LoginPage",
+        "AccountsOverviewPage"
+      ],
+      "timestamp": "2026-02-03T02:36:59.1786600Z"
+    },
+    {
+      "name": "View Accounts Overview after successful login",
+      "status": "Passed",
+      "duration": 7.3275275,
+      "pages": [
+        "LoginPage",
+        "AccountsOverviewPage"
+      ],
+      "timestamp": "2026-02-03T02:37:35.5135134Z"
+    },
+    {
+      "name": "Accounts Overview displays account information",
+      "status": "Passed",
+      "duration": 4.9967749,
+      "pages": [
+        "LoginPage",
+        "AccountsOverviewPage"
+      ],
+      "timestamp": "2026-02-03T02:41:40.3554723Z"
+    },
+    {
+      "name": "Navigation to account details",
+      "status": "Passed",
+      "duration": 5.6365847,
+      "pages": [
+        "LoginPage",
+        "AccountsOverviewPage"
+      ],
+      "timestamp": "2026-02-03T02:41:46.7130996Z"
+    },
+    {
+      "name": "View Accounts Overview after successful login",
+      "status": "Passed",
+      "duration": 4.9425071,
+      "pages": [
+        "LoginPage",
+        "AccountsOverviewPage"
+      ],
+      "timestamp": "2026-02-03T02:41:52.4111173Z"
+    },
+    {
+      "name": "Invalid login",
+      "status": "Passed",
+      "duration": 4.0368417,
+      "pages": [
+        "LoginPage",
+        "AccountsOverviewPage"
+      ],
+      "timestamp": "2026-02-03T02:41:57.1707545Z"
+    },
+    {
+      "name": "Successful login",
+      "status": "Passed",
+      "duration": 4.377879,
+      "pages": [
+        "LoginPage",
+        "AccountsOverviewPage"
+      ],
+      "timestamp": "2026-02-03T02:42:02.2101193Z"
+    }
+  ]
+}
